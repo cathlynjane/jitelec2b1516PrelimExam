@@ -58,17 +58,17 @@
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/inc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="New RadioButton"/>
+            android:text="@string/inc"/>
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/dec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New RadioButton"/>
+            android:text="@string/dec"/>
     </RadioGroup>
 
     <ToggleButton

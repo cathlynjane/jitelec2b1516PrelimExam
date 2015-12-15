@@ -5,8 +5,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.ToggleButton;
+
+import java.lang.Override;
+import java.lang.Runnable;
+import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView mTvTime;
+    ToggleButton mBtnSwitch;
+    RadioButton mBtnInc;
+    RadioButton mBtnDec;
+    RadioGroup mRdRadioGroup;
+    SeekBar mSkSeekBar;
+    TextView mTvSeekBar
+
+    private long timeRemaining = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +33,35 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mTvTime = (TextView) findViewById(R.id.textView);
+        mBtnSwitch = (ToggleButton) findViewById(R.id.toggleButton);
+        mBtnInc = (RadioButton) findViewById(R.id.inc);
+        mBtnDec = (RadioButton) findViewById(R.id.dec);
+        mRdRadioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        mSkSeekBar = (SeekBar) findViewById(R.id.seekBar);
+        mTvSeekBar = (TextView) findViewById(R.id.textView2);
+
+        mRdRadioGroup.setOnClickListener(this);
+        mBtnSwitch.setOnCheckedChangeListener(this);
+        mSkSeekBar.setOnSeekBarChangeListener(this);
+
+        mTvSeekBar.setText(mSkSeekBar.getProgress() + "");
+        final Handler handler = new Handler();
+
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                if(mBtnInc.isSelected()){
+                    timeRemaining+=1;
+                    mTvTime.setText(timeRemaining + "");
+                }
+                if else(mBtnDec.isSelected()){
+                    timeRemaining-=1;
+                    mTvTime.setText(timeRemaining + "");
+                }
+            }
+        }
     }
 
     @Override
